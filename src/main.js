@@ -14,6 +14,10 @@ import {
 
 import { createPostTable, insertPost } from './concepts/relationships.js';
 
+import {
+  getUsersWithPosts,
+  getUsersWithPostsLeftJoin,
+} from './concepts/joins.js';
 //test basic queries
 
 const textBasicQueries = async () => {
@@ -85,10 +89,28 @@ async function testRelationshipQueries() {
   }
 }
 
+async function testJoinsQuery() {
+  try {
+    // Fetch users with their posts-> inner join
+    const usersWithPosts = await getUsersWithPosts();
+    console.log('Users with their posts:', usersWithPosts);
+
+    // Fetch users with their posts-> left join
+    const usersWithPostsLeftJoin = await getUsersWithPostsLeftJoin();
+    console.log(
+      'Users with their posts using left join:',
+      usersWithPostsLeftJoin
+    );
+  } catch (error) {
+    console.error('Error in joins query:', error);
+  }
+}
+
 async function runAllQueries() {
   //   await textBasicQueries();
   //   await testFilteringSorting();
-  await testRelationshipQueries();
+  //   await testRelationshipQueries();
+  await testJoinsQuery();
 }
 
 runAllQueries();
