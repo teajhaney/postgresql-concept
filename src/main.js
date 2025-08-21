@@ -18,6 +18,9 @@ import {
   getUsersWithPosts,
   getUsersWithPostsLeftJoin,
 } from './concepts/joins.js';
+
+import { countPostByUser } from './concepts/aggregation.js';
+
 //test basic queries
 
 const textBasicQueries = async () => {
@@ -106,11 +109,22 @@ async function testJoinsQuery() {
   }
 }
 
+async function testAggregationQuery() {
+  try {
+    // Count posts by user
+    const postCountByUser = await countPostByUser();
+    console.log('Post count by user:', postCountByUser);
+  } catch (error) {
+    console.error('Error in aggregation query:', error);
+  }
+}
+
 async function runAllQueries() {
   //   await textBasicQueries();
   //   await testFilteringSorting();
   //   await testRelationshipQueries();
-  await testJoinsQuery();
+  //   await testJoinsQuery();
+  await testAggregationQuery();
 }
 
 runAllQueries();
