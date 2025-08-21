@@ -19,7 +19,7 @@ import {
   getUsersWithPostsLeftJoin,
 } from './concepts/joins.js';
 
-import { countPostByUser } from './concepts/aggregation.js';
+import { countPostByUser, averagePostByUser } from './concepts/aggregation.js';
 
 //test basic queries
 
@@ -114,6 +114,10 @@ async function testAggregationQuery() {
     // Count posts by user
     const postCountByUser = await countPostByUser();
     console.log('Post count by user:', postCountByUser);
+
+    //average posts by user
+    const averagePosts = await averagePostByUser();
+    console.log('Average posts by user:', averagePosts);
   } catch (error) {
     console.error('Error in aggregation query:', error);
   }
