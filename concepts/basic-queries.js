@@ -1,4 +1,4 @@
-import db from '../db/db.js';
+import db from '../src/db/db.js';
 
 export const createUserTable = async () => {
   const createTableQuery = `
