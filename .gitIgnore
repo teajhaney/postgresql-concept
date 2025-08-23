@@ -31,3 +31,7 @@ coverage/
 .vscode/
 .idea/
 *.swp
+
+/src/generated/prisma
+
+/src/generated/prisma
